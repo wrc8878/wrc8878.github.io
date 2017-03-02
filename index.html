@@ -1,0 +1,42 @@
+---
+layout: default
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/left.css">
+	</head>
+	<body>
+		<div class="top">
+			
+		</div>
+		<div class="myPages">
+			<ol>
+				{% for post in site.posts %}
+					<h3>
+						<li>
+							<a href="{{ site.baseurl }}{{ post.url }}" >
+							{{ post.title }}
+							</a>	
+						</li>
+					</h3>
+					<p id="theDate"></p>
+					<p id="content">{{ post.content }}</p><a style="display: none;color: red" id="aaa" href="#">更多</a>
+				{% endfor %}
+			</ol>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var myDate = new Date();
+		var year = myDate.getFullYear();
+		var month = myDate.getMonth()+1;
+		var day = myDate.getDate();
+		document.getElementById("theDate").innerText = year+"-"+month+"-"+day;
+
+		var obox = document.getElementById("content");
+		var demoHtml = obox.innerHTML.slice(0,100)+"...";
+		obox.innerHTML = demoHtml;
+	</script>
+</html>
